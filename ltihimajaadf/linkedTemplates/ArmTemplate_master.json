@@ -1,0 +1,91 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "ltihimajaadf"
+		},
+		"AzureBlobStoragels1_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureBlobStoragels1'"
+		},
+		"AzureSqlDatabaseproduct_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureSqlDatabaseproduct'"
+		},
+		"AzureSqlDestinationls_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureSqlDestinationls'"
+		},
+		"Trigger_1zf_properties_DeltaCopyFromBlobPipeline_parameters_windowStart": {
+			"type": "string",
+			"defaultValue": "@{addminutes(trigger().scheduledTime, -15)}"
+		},
+		"Trigger_1zf_properties_DeltaCopyFromBlobPipeline_parameters_windowEnd": {
+			"type": "string",
+			"defaultValue": "@trigger().scheduledTime"
+		},
+		"Trigger_fqi_properties_pipeline_parameters_windowStart": {
+			"type": "string",
+			"defaultValue": "@trigger().outputs.windowStartTime"
+		},
+		"Trigger_fqi_properties_pipeline_parameters_windowEnd": {
+			"type": "string",
+			"defaultValue": "@trigger().outputs.windowEndTime"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "ltihimajaadf_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"AzureBlobStoragels1_connectionString": {
+						"value": "[parameters('AzureBlobStoragels1_connectionString')]"
+					},
+					"AzureSqlDatabaseproduct_connectionString": {
+						"value": "[parameters('AzureSqlDatabaseproduct_connectionString')]"
+					},
+					"AzureSqlDestinationls_connectionString": {
+						"value": "[parameters('AzureSqlDestinationls_connectionString')]"
+					},
+					"Trigger_1zf_properties_DeltaCopyFromBlobPipeline_parameters_windowStart": {
+						"value": "[parameters('Trigger_1zf_properties_DeltaCopyFromBlobPipeline_parameters_windowStart')]"
+					},
+					"Trigger_1zf_properties_DeltaCopyFromBlobPipeline_parameters_windowEnd": {
+						"value": "[parameters('Trigger_1zf_properties_DeltaCopyFromBlobPipeline_parameters_windowEnd')]"
+					},
+					"Trigger_fqi_properties_pipeline_parameters_windowStart": {
+						"value": "[parameters('Trigger_fqi_properties_pipeline_parameters_windowStart')]"
+					},
+					"Trigger_fqi_properties_pipeline_parameters_windowEnd": {
+						"value": "[parameters('Trigger_fqi_properties_pipeline_parameters_windowEnd')]"
+					}
+				}
+			},
+			"dependsOn": []
+		}
+	]
+}
