@@ -10,8 +10,8 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "unsold.txt",
-				"container": "destination"
+				"fileName": "Books.csv",
+				"container": "eventdriven"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
