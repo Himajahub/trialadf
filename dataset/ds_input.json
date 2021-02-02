@@ -1,0 +1,34 @@
+{
+	"name": "ds_input",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase1",
+			"type": "LinkedServiceReference",
+			"parameters": {
+				"Paramdb": {
+					"value": "@dataset().Paramdb",
+					"type": "Expression"
+				}
+			}
+		},
+		"parameters": {
+			"Paramdb": {
+				"type": "string"
+			},
+			"ParamSource": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": {
+				"value": "@dataset().ParamSource",
+				"type": "Expression"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

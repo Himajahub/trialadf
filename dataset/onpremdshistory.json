@@ -1,5 +1,5 @@
 {
-	"name": "DelimitedText1",
+	"name": "onpremdshistory",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "FileServer1",
@@ -10,30 +10,14 @@
 		"typeProperties": {
 			"location": {
 				"type": "FileServerLocation",
-				"fileName": "owd_coviddata.csv"
+				"fileName": "national_histoey.csv"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
 			"firstRowAsHeader": true,
 			"quoteChar": "\""
 		},
-		"schema": [
-			{
-				"type": "String"
-			},
-			{
-				"type": "String"
-			},
-			{
-				"type": "String"
-			},
-			{
-				"type": "String"
-			},
-			{
-				"type": "String"
-			}
-		]
+		"schema": []
 	},
 	"type": "Microsoft.DataFactory/factories/datasets"
 }

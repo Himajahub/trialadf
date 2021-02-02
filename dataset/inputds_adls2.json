@@ -1,16 +1,17 @@
 {
-	"name": "DelimitedText1",
+	"name": "inputds_adls2",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "FileServer1",
+			"referenceName": "AzureDataLakeStorage1",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
-				"type": "FileServerLocation",
-				"fileName": "owd_coviddata.csv"
+				"type": "AzureBlobFSLocation",
+				"fileName": "national_history_modified",
+				"fileSystem": "output"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
@@ -19,18 +20,15 @@
 		},
 		"schema": [
 			{
+				"name": "Death",
 				"type": "String"
 			},
 			{
+				"name": "DeathIncreace",
 				"type": "String"
 			},
 			{
-				"type": "String"
-			},
-			{
-				"type": "String"
-			},
-			{
+				"name": "IncluCummulative",
 				"type": "String"
 			}
 		]
